@@ -25,7 +25,7 @@ package com.jeonbase.wifidirectsample;
         import android.content.Intent;
         import android.content.IntentFilter;
         import android.net.wifi.p2p.WifiP2pConfig;
-        import android.net.wifi.p2p.WifiP2pDevice;
+        //import android.net.wifi.p2p.WifiP2pDevice;
         import android.net.wifi.p2p.WifiP2pManager;
         import android.net.wifi.p2p.WifiP2pManager.ActionListener;
         import android.net.wifi.p2p.WifiP2pManager.Channel;
@@ -40,6 +40,8 @@ package com.jeonbase.wifidirectsample;
         import android.widget.Toast;
 
         import com.jeonbase.wifidirectsample.DeviceListFragment.DeviceActionListener;
+
+        import java.util.ArrayList;
 
 /**
  * An activity that uses WiFi Direct APIs to discover and connect with available
@@ -58,6 +60,31 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
     private final IntentFilter intentFilter = new IntentFilter();
     private Channel channel;
     private BroadcastReceiver receiver = null;
+
+    private ArrayList<Node> neighborList = new ArrayList<Node>(); //Contains list of neighbors, private to limit actions to get, add, and remove
+
+    //get list **REMOVE IF POSSIBLE**
+    public ArrayList<Node> getNeighborList() {
+        return neighborList;
+    }
+    //get node in list
+    public Node getNode(int i) {
+        return neighborList.get(i);
+    }
+    //add node to list
+    public void addNeighbor(Node node){
+        //check if item exists in list
+        if(!neighborList.contains(node))
+            neighborList.add(node);
+    }
+    //remove node from list by name
+    public void removeNeighbor(Node node){
+        neighborList.remove(node);
+    }
+    //remove node from list by index
+    public void removeNeighbor(int i){
+        neighborList.remove(i);
+    }
 
     /**
      * @param isWifiP2pEnabled the isWifiP2pEnabled to set

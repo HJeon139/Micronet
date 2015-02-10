@@ -19,25 +19,27 @@ package com.jeonbase.wifidirectsample;
  */
 
 
-        import android.app.ListFragment;
-        import android.app.ProgressDialog;
-        import android.content.Context;
-        import android.content.DialogInterface;
-        import android.net.wifi.p2p.WifiP2pConfig;
-        import android.net.wifi.p2p.WifiP2pDevice;
-        import android.net.wifi.p2p.WifiP2pDeviceList;
-        import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ArrayAdapter;
-        import android.widget.ListView;
-        import android.widget.TextView;
+import android.app.ListFragment;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.wifi.p2p.WifiP2pConfig;
+//import android.net.wifi.p2p.WifiP2pManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+
+//import android.net.wifi.p2p.WifiP2pDevice;
+// import android.net.wifi.p2p.WifiP2pDeviceList;
+//import com.jeonbase.wifidirectsample.PeerListListener.java;
 
 /**
  * A ListFragment that displays available peers on discovery and requests the
