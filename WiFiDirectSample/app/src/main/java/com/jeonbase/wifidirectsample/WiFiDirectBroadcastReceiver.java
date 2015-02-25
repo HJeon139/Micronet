@@ -18,16 +18,15 @@ package com.jeonbase.wifidirectsample;
  * limitations under the License.
  */
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.net.NetworkInfo;
-import android.util.Log;
-
-//import android.net.wifi.p2p.WifiP2pDevice;
-import android.net.wifi.p2p.WifiP2pManager;
-// import android.net.wifi.p2p.WifiP2pManager.Channel;
-//import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
+        import android.content.BroadcastReceiver;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.net.NetworkInfo;
+        import android.net.wifi.p2p.WifiP2pDevice;
+        import android.net.wifi.p2p.WifiP2pManager;
+        import android.net.wifi.p2p.WifiP2pManager.Channel;
+        import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
+        import android.util.Log;
 
 /**
  * A BroadcastReceiver that notifies of important wifi p2p events.
@@ -35,7 +34,7 @@ import android.net.wifi.p2p.WifiP2pManager;
 public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
     private WifiP2pManager manager;
-    private WifiP2pManager.Channel channel;
+    private Channel channel;
     private WiFiDirectActivity activity;
 
     /**
@@ -43,7 +42,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
      * @param channel Wifi p2p channel
      * @param activity activity associated with the receiver
      */
-    public WiFiDirectBroadcastReceiver(WifiP2pManager manager, WifiP2pManager.Channel channel,
+    public WiFiDirectBroadcastReceiver(WifiP2pManager manager, Channel channel,
                                        WiFiDirectActivity activity) {
         super();
         this.manager = manager;
@@ -76,9 +75,9 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
             // request available peers from the wifi p2p manager. This is an
             // asynchronous call and the calling activity is notified with a
-            // callback on PeerListListener.java.onPeersAvailable()
+            // callback on PeerListListener.onPeersAvailable()
             if (manager != null) {
-                manager.requestPeers(channel, (WifiP2pManager.PeerListListener) activity.getFragmentManager()
+                manager.requestPeers(channel, (PeerListListener) activity.getFragmentManager()
                         .findFragmentById(R.id.frag_list));
             }
             Log.d(WiFiDirectActivity.TAG, "P2P peers changed");
@@ -98,7 +97,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
                 DeviceDetailFragment fragment = (DeviceDetailFragment) activity
                         .getFragmentManager().findFragmentById(R.id.frag_detail);
-                manager.requestConnectionInfo(channel, (WifiP2pManager.ConnectionInfoListener)fragment);
+                manager.requestConnectionInfo(channel, fragment);
             } else {
                 // It's a disconnect
                 activity.resetData();
